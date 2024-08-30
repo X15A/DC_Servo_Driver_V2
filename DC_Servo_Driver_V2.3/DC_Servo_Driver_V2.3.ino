@@ -81,7 +81,7 @@
   const double kP = .005; // proportional gain, primary driver behind the PID
   const double kI = .0000000001; // integral gain, used to fine tune results to land on target
   const double kD = .00005; // derivative gain, used to dampen/prevent oscillations and overshoot. 
-  const double kF = .0; // Feed Forward gain, used to smooth output change. Can cause issues with sudden direction changes if too large
+  const double kF = .0; // Feed Forward gain, used to offset constant load. Only use if necessary.
   const double OutputLim = 0.6; // Absolute output value, use to control power output. Start with low outputs and ramp up as needed
 
   double pidOUT = 0; // Output storage variable
@@ -193,7 +193,7 @@ void Step(){
 double PIDF(){
 
   
-  pidOUT = constrain((pidOUT * kF) + ((error * kP) + (error * kI * (Itimer)) - (( error - lError) * kD)), -OutputLim, OutputLim); // PIDF calculation constrained to output limiter values
+  pidOUT = constrain(kF + ((error * kP) + (error * kI * (Itimer)) - (( error - lError) * kD)), -OutputLim, OutputLim); // PIDF calculation constrained to output limiter values
     lError = error;
 
   if(enabled == false){ // disables PID if not enabled
