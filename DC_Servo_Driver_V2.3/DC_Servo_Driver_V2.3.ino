@@ -1,8 +1,8 @@
 #include <Arduino.h>
 
 // Quadratre Input Servo Motor (QISMO) Driver V1.3
-//Written by Howard Bartlett on 4/23/2017
-//Last updated by Howard Bartlett on 8/28/2024 (added some comments, removed profanity)
+//Written by Howard on 4/23/2017
+//Last updated by Howard on 8/28/2024 (added some comments, removed profanity)
 
 
 //Common Clause licensing terms
